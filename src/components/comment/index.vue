@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import Toast from 'mint-ui'
+  import {Toast} from 'mint-ui'
     export default {
       data() {
         return {
@@ -41,13 +41,19 @@
           })
         },
         addCommentList() {
-          this.$http.post('api/postcomment/'+this.id,{artid:this.id,content:this.content}).then(result=>{
-            if(result.body.status===0) {
-              this.getCommentList()
-            } else {
-              Toast('添加评论失败.请重试')
-            }
-          })
+          if(this.content.trim()==='') {
+            Toast('评论不能为空')
+          } else {
+            this.$http.post('api/postcomment/'+this.id,{artid:this.id,content:this.content}).then(result=>{
+              if(result.body.status===0) {
+                this.getCommentList()
+                this.content=''
+              } else {
+                Toast('添加评论失败.请重试')
+              }
+            })
+          }
+
         }
       }
     }
