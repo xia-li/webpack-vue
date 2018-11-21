@@ -1,5 +1,5 @@
 <template>
-  <div id="app-container">
+  <div class="app-container">
     <!--头部-->
     <mt-header fixed title="电商网站"></mt-header>
     <!--底部-->
@@ -33,21 +33,23 @@
 </script>
 
 <style lang="less">
-  #app-container {
+  .app-container {
     overflow-x: hidden;
-    padding: 40px 0 50px;
+    padding-top: 40px;
+    padding-bottom: 50px;
     .v-enter {
       opacity: 0;
       transform: translateX(100%);
     }
     .v-leave-to {
+      position: absolute;
       opacity: 0;
       transform: translateX(-100%);
-      position: absolute;
     }
     .v-enter-active,
     .v-leave-active {
-      transition: all .8s ease;
+      transition: all .6s ease;
     }
   }
+
 </style>
