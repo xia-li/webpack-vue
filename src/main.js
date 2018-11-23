@@ -7,11 +7,19 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource);
 //设置根域名
 Vue.http.options.root = 'http://www.lovegf.cn:8899/';
-//设置post提交
+//设置post提交时的表单提交格式
 Vue.http.options.emulateJSON = true;
 //设置全局过滤器
 Vue.filter('dateForm', (dateStr, pattern = 'YYYY-MM-DD HH:mm:ss') => {
   return moment(dateStr).format(pattern)
+});
+//懒加载组件
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload, {
+  error:'/static/images/2.jpg',
+  loading: '/static/images/1.jpg',
+  listenEvents:['scroll']
 });
 //导入css样式
 import './lib/mui/css/mui.css'
@@ -24,6 +32,7 @@ import {
   SwipeItem,
   Button
 } from 'mint-ui'
+
 Vue.component(Button.name, Button);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
