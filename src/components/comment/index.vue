@@ -35,6 +35,7 @@
       getCommentList() {
         this.$http.get('api/getcomments/' + this.id + '?pageindex=' + this.pageindex).then(res => {
           if (res.body.status === 0) {
+            // this.commentList = res.body.message
             this.commentList =this.commentList.concat(res.body.message)
           } else {
             Toast('获取评论失败,请重试')
@@ -47,11 +48,19 @@
       },
       addCommentList() {
         if (this.content.trim() === '') {
-          Toast('评论不能为空')
+         return Toast('评论内容不能为空')
         } else {
           this.$http.post('api/postcomment/' + this.id, {artid: this.id, content: this.content}).then(result => {
             if (result.body.status === 0) {
-              this.getCommentList()
+              // this.pageindex=1;
+              // this.commentList=[];
+              // this.getCommentList();
+              let cmt = {
+                add_time:new Date(),
+                user_name:'匿名用户',
+                content:this.content
+              };
+              this.commentList.unshift(cmt);
               this.content = ''
             } else {
               Toast('添加评论失败.请重试')

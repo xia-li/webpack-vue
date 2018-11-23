@@ -12,10 +12,10 @@
         <img src="../../images/menu1.png">
         <div class="mui-media-body">新闻资讯</div>
       </router-link></li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/imagesList">
         <img src="../../images/menu2.png">
         <div class="mui-media-body">图片分享</div>
-      </a></li>
+      </router-link></li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
         <img src="../../images/menu3.png">
         <div class="mui-media-body">商品购买</div>
@@ -35,7 +35,6 @@
     </ul>
   </div>
 </template>
-
 <script>
   import {Toast} from 'mint-ui'
 
